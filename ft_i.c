@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_i.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:57:35 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/07 17:36:59 by yfradj           ###   ########.fr       */
+/*   Created: 2024/11/12 15:28:57 by yfradj            #+#    #+#             */
+/*   Updated: 2024/11/16 14:15:51 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+#include "ft_printf.h"
+
+int	ft_putint(int nb)
 {
-	int	i;
+	long	n;
 
-	i = 0;
-	while (s[i])
+	n = nb;
+	if (n < 0)
 	{
-		f(i, &s[i]);
-		i++;
+		n = n * (-1);
+		ft_putchar('-');
 	}
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+	else
+		ft_putchar(n + '0');
+	return (ft_len_n(n));
 }
-
-// void ft(unsigned int ind, char *c)
-// {
-// 	int	i;
-// 	i = 0;
-// 	ind = 0;
-// 	while (c[i])
-// 	{
-// 		if (*c == 'A')
-// 			*c = 'B';
-// 		i++;
-// 	}
-// }
-
-// int main()
-// {
-// 	char s[10] = "AAAk";
-// 	ft_striteri(s, ft);
-// 	printf("%s\n", s);
-// }

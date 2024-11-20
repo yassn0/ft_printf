@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_len_n.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:12:17 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/08 16:55:31 by yfradj           ###   ########.fr       */
+/*   Created: 2024/11/14 11:23:10 by yfradj            #+#    #+#             */
+/*   Updated: 2024/11/16 14:15:57 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static int	len_nb(int nb)
+int	ft_len_n(long long nb)
 {
 	int	i;
 
@@ -30,35 +28,20 @@ static int	len_nb(int nb)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+int	ft_len_hexa(long long nb)
 {
-	int		i;
-	int		lenn;
-	long	nb;
-	char	*str;
+	int	i;
 
-	nb = n;
 	i = 0;
-	lenn = len_nb(n);
-	str = malloc(sizeof(char) * (lenn + 1));
-	if (!str)
-		return (NULL);
-	str[lenn] = '\0';
-	if (nb < 0)
+	if (nb <= 0)
 	{
-		str[0] = '-';
-		nb = -nb;
+		nb *= -1;
 		i++;
 	}
-	while (lenn-- > i)
+	while (nb != 0)
 	{
-		str[lenn] = (nb % 10) + '0';
-		nb /= 10;
+		nb = nb / 16;
+		i++;
 	}
-	return (str);
+	return (i);
 }
-// int main()
-// {
-// 	printf("%s\n", ft_itoa(0));
-// 	printf("%d\n", len_nb(0));
-// }

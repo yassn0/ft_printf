@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_i.c                                             :+:      :+:    :+:   */
+/*   ft_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 15:28:57 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/14 11:31:16 by yfradj           ###   ########.fr       */
+/*   Created: 2024/11/12 12:21:48 by yfradj            #+#    #+#             */
+/*   Updated: 2024/11/16 14:16:26 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/my.h"
+#include "ft_printf.h"
 
-int	ft_putint(int nb)
+int	ft_putunsigned_nbr(unsigned int nb)
 {
-	if (nb < 0)
-	{
-		nb = nb * (-1);
-		ft_putchar('-');
-	}
 	if (nb > 9)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putunsigned_nbr(nb / 10);
+		ft_putunsigned_nbr(nb % 10);
 	}
 	else
 		ft_putchar(nb + '0');

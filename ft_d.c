@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_d.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 10:41:12 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/07 11:03:36 by yfradj           ###   ########.fr       */
+/*   Created: 2024/11/12 12:15:22 by yfradj            #+#    #+#             */
+/*   Updated: 2024/11/18 12:49:52 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_putnbr(int nb)
 {
-	void	*tab;
+	long	n;
+	long	nu;
 
-	tab = malloc(nmemb * size);
-	if (!tab)
-		return (NULL);
-	tab = ft_memset(tab, 0, nmemb * size);
-	return (tab);
+	n = nb;
+	nu = nb;
+	if (nu < 0)
+	{
+		nu = nu * (-1);
+		ft_putchar('-');
+	}
+	if (nu > 9)
+	{
+		ft_putnbr(nu / 10);
+		ft_putnbr(nu % 10);
+	}
+	else
+		ft_putchar(nu + '0');
+	return (ft_len_n((int)n));
 }
 
 // int main()
 // {
-// 	char *str;
-// 	char *str2;
-// 	str = calloc()
-//}
+// 	int i = ft_putnbr(INT_MIN);
+// 	printf("%d", i);
+// }

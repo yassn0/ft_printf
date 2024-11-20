@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 08:17:40 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/08 14:31:09 by yfradj           ###   ########.fr       */
+/*   Created: 2024/11/12 15:04:37 by yfradj            #+#    #+#             */
+/*   Updated: 2024/11/18 20:19:02 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "ft_printf.h"
+
+int	ft_putnbr_base(unsigned long n, const char *base)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+	int				len;
+	unsigned long	base_len;
+
+	len = 0;
+	base_len = 0;
+	while (base[base_len])
+		base_len++;
+	if (n >= base_len)
+		len += ft_putnbr_base(n / base_len, base);
+	len += write(1, &base[n % base_len], 1);
+	return (len);
 }

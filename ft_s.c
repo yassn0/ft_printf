@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_p.c                                             :+:      :+:    :+:   */
+/*   ft_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 15:18:10 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/14 15:19:17 by yfradj           ###   ########.fr       */
+/*   Created: 2024/11/12 11:54:31 by yfradj            #+#    #+#             */
+/*   Updated: 2024/11/16 14:16:24 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/my.h"
+#include "ft_printf.h"
 
-int	ft_putptr(void *ptr)
+int	ft_putstr(char *str)
 {
 	int	i;
-	
+
 	i = 0;
-	if (!ptr)
+	if (!str)
 	{
-		write(1, "(nil)", 5);
-		return (5);
+		write(1, "(null)", 6);
+		return (6);
 	}
-	i = ft_putstr("0x");
-	i = i + ft_putnbr_base((unsigned long)(&ptr), "0123456789abcdef");
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+		i++;
+	}
 	return (i);
 }
